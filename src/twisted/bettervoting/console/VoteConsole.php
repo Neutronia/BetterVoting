@@ -25,6 +25,9 @@ final class VoteConsole implements CommandSender{
 	}
 
 	public function sendMessage(Translatable|string $message) : void{
+		if($message instanceof Translatable){
+			$message = $this->getLanguage()->translate($message);
+		}
 		$this->getServer()->getLogger()->info($message);
 	}
 
